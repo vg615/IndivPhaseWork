@@ -82,9 +82,9 @@ The Map of memory location to data is chosen to be currently of type ``` Map<WAd
 
 ##### The ```execution``` function returns:
 
--The final address at which we stopped in memory.
--The map between registers and their stored values updated.
--The map between memory address and memory values updated.
+- The final address at which we stopped in memory.
+- The map between registers and their stored values updated.
+- The map between memory address and memory values updated.
 
 
 ### Tests:
