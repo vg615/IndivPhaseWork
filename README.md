@@ -164,12 +164,17 @@ _A lot of trouble arose when trying to set correctly memory locations, memory va
 
 The ```testRegMapAndMemMap``` is made of basic unit tests testing some ```LDM``` and ```STM```. Initial map of registers and map of memory location are created, and then instructions are executed using these maps as inputs. Compare the result with the expected output. To make it feasible, the length of the memory map is kept small.
 
-|   Command                 | Test
-| --------------------------|---------
-| STMIB R1, {R7,R8}         | Passed
-| STMDB R12!, {R9-R11, R1}  | Passed
-| LDMIA R1, {R2-R4}         | Passed
-| LDMDA R3!, {R9,R1}        | Passed
+Test Name			|   Command                 | Test
+				| --------------------------|---------
+testAgainstVisual		|LDMIA R0, {R4-R6}	    |Passed
+testTokenizeandParse		|tokenize "R8,{R0-R7,R6}"   |Passed
+testTokenizeandParse		|tokenize "LR!,{R0-R3}"     |Passed
+testTokenizeandParse		|makeRegList (tokenize "R7-LR,LR,LR,R3-R7}") |Passed
+testTokenizeandParse		|makeRegList (tokenize "r10-sP,Pc}") |Passed
+testRegMapAndMemMap		| STMIB R1, {R7,R8}         | Passed
+testRegMapAndMemMap		| STMDB R12!, {R9-R11, R1}  | Passed
+testRegMapAndMemMap		| LDMIA R1, {R2-R4}         | Passed
+testRegMapAndMemMap		| LDMDA R3!, {R9,R1}        | Passed
 
 
 
