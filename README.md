@@ -18,6 +18,14 @@ The code is broken down into _4 major parts_:
 
 
 ### Tokenizer: 
+_Inputs_ : 
+```F#
+str : string
+```
+_Output_ : 
+```F#
+Token list
+```
 
 Supposed to tokenise operands only.
 
@@ -35,6 +43,15 @@ It converts all input operands to uppercase letters to make sure registers such 
 
 
 ### Parser:
+
+_Inputs_ : 
+```F#
+ls : LineData
+```
+_Output_ : 
+```F#
+Result<Parse<Instr>,string> option
+```
 
 The parser is built based around this _simple reasoning_: the syntax for an LDM/STM instruction will ALWAYS have the form of ```OpCode Rn(!), {list of registers}```. Therefore, the list of possible instructions is very straightforward and easy to match. 
 
