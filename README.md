@@ -17,13 +17,14 @@ The code is broken down into _4 major parts_:
 - _Testing_ (module TestFile)
 
 
-The Tokenizer: 
+##### Tokenizer: 
 
-Supposed to only tokenise operands.
+Supposed to tokenise operands only.
 
 The token types are : 
+```F#
 |Reg of RName*int |WriteB of int |Comma of int |LCBRA of int |RCBRA of int |Hyphen of int |END
-
+```
 This is all that's required for Operands detection (Opcode detection is already given).
 
 Where: 
@@ -33,7 +34,7 @@ Where:
 It converts all input operands to uppercase letters to make sure registers such as "lr or "pc" will be correctly tokenised.
 
 
-The Parser:
+#### Parser:
 
 The parser is built based on this important fact: the syntax for an LDM/STM instruction will ALWAYS have the form of "OpCode Rn(Optional !), {list of registers}" .Therefore, the list of possible instructions is very straightforward and easy to match. 
 
@@ -44,7 +45,7 @@ The role of the "parse" function is to detect a correct syntax starting with an 
 All this is done with "removeDuplicates" , "orderListreg" and "expandRegRange" (which from R0-R3 creates [R0;R1;R2;R3]).
 
 
-The Execution:
+#### Execution:
 
 - First checks the condition flags: if condition doesn't hold, returns the input registers, flags and memory.
 - If conditions hold, the function matches successively the different types in the opcode: root/suffix.
@@ -78,7 +79,7 @@ The "execution" function returns:
 -The map between memory address and memory values updated.
 
 
-The Tests:
+#### Tests:
 
 The test module is made mainly of unit tests. 
 
