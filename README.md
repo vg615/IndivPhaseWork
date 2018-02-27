@@ -17,7 +17,7 @@ The code is broken down into _4 major parts_:
 - _Testing_ (module TestFile)
 
 
-##### Tokenizer: 
+### Tokenizer: 
 
 Supposed to tokenise operands only.
 
@@ -27,16 +27,16 @@ The token types are :
 ```
 This is all that's required for Operands detection (Opcode detection is already given).
 
-Where: 
--WriteB is to detect "!" , which means we write back the final memory address into the base register, Rn.
--LCBRA and RCBRA stand for Left Curly Bracket and Right Curly Bracket.
--Hyphen is to detect " - " , since the list of registers can be of the form {R4, R5-LR}.
+###### Where: 
+- WriteB is to detect "!" , which means we write back the final memory address into the base register, Rn.
+- LCBRA and RCBRA stand for Left Curly Bracket and Right Curly Bracket.
+- Hyphen is to detect " - " , since the list of registers can be of the form {R4, R5-LR}.
 It converts all input operands to uppercase letters to make sure registers such as "lr or "pc" will be correctly tokenised.
 
 
-#### Parser:
+### Parser:
 
-The parser is built based on this important fact: the syntax for an LDM/STM instruction will ALWAYS have the form of "OpCode Rn(Optional !), {list of registers}" .Therefore, the list of possible instructions is very straightforward and easy to match. 
+The parser is built based around this _simple reasoning_: the syntax for an LDM/STM instruction will ALWAYS have the form of `"OpCode Rn(Optional !), {list of registers}"`. Therefore, the list of possible instructions is very straightforward and easy to match. 
 
 It breaks the input line into 2 major blocks, which are analysed in the "parse" and "makeRegList" function.
 
@@ -45,7 +45,7 @@ The role of the "parse" function is to detect a correct syntax starting with an 
 All this is done with "removeDuplicates" , "orderListreg" and "expandRegRange" (which from R0-R3 creates [R0;R1;R2;R3]).
 
 
-#### Execution:
+### Execution:
 
 - First checks the condition flags: if condition doesn't hold, returns the input registers, flags and memory.
 - If conditions hold, the function matches successively the different types in the opcode: root/suffix.
@@ -79,7 +79,7 @@ The "execution" function returns:
 -The map between memory address and memory values updated.
 
 
-#### Tests:
+### Tests:
 
 The test module is made mainly of unit tests. 
 
