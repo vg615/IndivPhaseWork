@@ -18,7 +18,7 @@ The code is broken down into _4 major parts_:
 
 
 ### Tokenizer: 
-_Inputs_ : 
+_Input_ : 
 ```F#
 str : string
 ```
