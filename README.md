@@ -100,7 +100,7 @@ To do the ```LDM``` instruction:
 ```makeMapofMemLoc``` takes the ```vMemData``` output of Visual and a base memory address (that we set to ```0x1000``` since this is the value used in the default parameters for memory in ```Visual```); 
 and creates a  ```Map<WAddr, <MemData>>```. 
 
-An initial ```Map<RName;uint32>``` and ```Map<WAddr, <MemData>>``` is created by using the two above functions on the output of ```RunVisualWithFlagsOut defaultParas " " ``` .
+Initial ```Map<RName;uint32>``` and ```Map<WAddr, <MemData>>``` are created by using the two above functions on the output of ```RunVisualWithFlagsOut defaultParas " " ``` .
 _Important to note_: when comparing values; we don't look at R0, R13, R14 or R15 since these registers are used in ```Visual run through F#```, to store and load memory so they are not relevant.
 _A lot of trouble arose when trying to set correctly memory locations, memory values because memory addresses seemed to be offset by some undetermined number_, which is why this test is trivial. But at least it can compare the two outputs.
 
