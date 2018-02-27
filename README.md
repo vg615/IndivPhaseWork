@@ -93,9 +93,9 @@ The ```test module``` is made mainly of unit tests.
 
 The ```testTokenizeandParse``` test checks that the ```tokenize``` and the ```makeRegList``` functions provide correct outputs for multiple inputs (repeated registers in registers list, lowercase letters, presence of ```!```).
 
-The ```testAgainstVisual``` test compares Visual's and the execution function's outputs for an ```LDM``` instruction. I didn't manage to properly modify the Visual Test Files to correctly modify memory location and map them to the execution function's output for ```STM``` instructions. 
+The ```testAgainstVisual``` test compares ```Visual```'s and the ```execution``` function's outputs for an ```LDM``` instruction. I didn't manage to properly modify the Visual Test Files to correctly modify memory location and map them to the execution function's output for ```STM``` instructions. 
 To do the ```LDM``` instruction: 
-1) Type transformation functions are used to map Visual's output type to our Execution's output type: 
+1) Type transformation functions are used to map ```Visual```'s output type to our ```Execution```'s output type: 
 ```makeMapofReg``` takes the ```(Out * int) list``` output of ```Visual``` and transforms it to a ```Map<RName;uint32>```.
 ```makeMapofMemLoc``` takes the ```vMemData``` output of Visual and a base memory address (that we set to ```0x1000``` since this is the value used in the default parameters for memory in ```Visual```); 
 and creates a  ```Map<WAddr, <MemData>>```. 
