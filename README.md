@@ -1,8 +1,8 @@
 # Individual phase work
 
 ### This code implements the following instructions:
-#### - LDM{Suffix}{Condition} Rn{Optional !}, {reglist}
-#### - STM{Suffix}{Condition} Rn{Optional !}, {reglist}
+#### - LDM{Suffix}{Condition} Rn(!), {reglist}
+#### - STM{Suffix}{Condition} Rn(!), {reglist}
 #### LDM stands for: Load Multiple Registers (from memory)
 #### STM stands for: Store Multiple Registers (to memory)
 
@@ -46,6 +46,16 @@ All this is done with ```removeDuplicates``` , ```orderListreg``` and ```expandR
 
 
 ### Execution:
+_Inputs_ : 
+```F#
+(instr:Result<Parse<Instr>,string> option) dataPath machineMem memAddress 
+```
+_Output_ : 
+```F#
+Result<uint32*DataPath*Map<WAddr,uint32>,string> option
+```
+
+Result<uint32*DataPath*Map<WAddr,uint32>,string> option
 
 - First checks the condition flags: if condition doesn't hold, returns the input registers, flags and memory.
 - If conditions hold, the function matches successively the different types in the opcode: root/suffix.
