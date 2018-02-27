@@ -1,5 +1,3 @@
-# IndivPhaseWork
-
 # Individual phase work
 
 ### This code implements the following instructions:
