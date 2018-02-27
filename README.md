@@ -164,8 +164,8 @@ _A lot of trouble arose when trying to set correctly memory locations, memory va
 
 The ```testRegMapAndMemMap``` is made of basic unit tests testing some ```LDM``` and ```STM```. Initial map of registers and map of memory location are created, and then instructions are executed using these maps as inputs. Compare the result with the expected output. To make it feasible, the length of the memory map is kept small.
 
-Test Name			|   Command                 | Test
-				| --------------------------|---------
+Test Name			|   Command                 | Test |
+--------------------------------| --------------------------|---------|
 testAgainstVisual		|LDMIA R0, {R4-R6}	    |Passed
 testTokenizeandParse		|tokenize "R8,{R0-R7,R6}"   |Passed
 testTokenizeandParse		|tokenize "LR!,{R0-R3}"     |Passed
