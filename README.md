@@ -98,15 +98,14 @@ If suffix = ```DA```, same as ```IA``` but instead of incrementing memory addres
 If suffix = ```DB```, same as ```DA``` but ```(Initial Key for memory address) = (Value in Rn - 4)```.
 
 The same reasoning applies almost exactly for ```LDM``` instructions, except that we modify the ```Map<RName,RegisterData>``` instead. 
-Both ```LDM``` and ```STM``` functions also return ```PC``` incremented by 4, and if ```writeB``` is "true" then Rn is filled with the final memory address we stopped.
+Both ```LDM``` and ```STM``` functions also return ```PC``` incremented by 4, and if ```writeB``` is "true" then Rn is filled with the final memory address at which we stopped.
 
 _Important things not to forget_:
 - The base memory address must be superior to ```0x100``` (default value in Visual, can be modified) and divisible by 4 (for ```LDM/STM```).
 - Restrictions are slightly different between ```LDM``` and ```STM``` instructions.
 - ```LDM``` and ```STM``` only cost 4 cycles, whatever the number of registers that we need to store/load.
 - Suffixes work differently between ```LDM``` and ```STM```, that is, ```STMDB``` and ```LDMDB``` will NOT work in the same way, and this because highest register is always at the highest memory location.
-
-The Map of memory location to data is chosen to be currently of type ``` Map<WAddr,uint32> ``` and not ``` Map<WAddr,MemLoc<'INS>> ``` to simplify testing, and because it is easy to modify in the group phase.
+- The Map of memory location to data is chosen to be currently of type ``` Map<WAddr,uint32> ``` and not ``` Map<WAddr,MemLoc<'INS>> ``` to simplify testing, and because it is easy to modify in the group phase.
 
 
 
