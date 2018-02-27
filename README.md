@@ -124,7 +124,7 @@ _A lot of trouble arose when trying to set correctly memory locations, memory va
 
 2) Then, we call the same instructions on both our ```Execution``` function and ```RunVisualWithFlagsOut``` and compare their output registers.
 
-The ```testRegMapAndMemMap``` is made of basic unit tests testing some ```LDM``` and ```STM```.
+The ```testRegMapAndMemMap``` is made of basic unit tests testing some ```LDM``` and ```STM```. Initial map of registers and map of memory location are created, and then instructions are executed using these maps as inputs. Compare the result with the expected output. To make it feasible, the length of the memory map is kept small.
 
 |   Command                 | Test
 | --------------------------|---------
