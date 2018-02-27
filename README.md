@@ -126,11 +126,12 @@ _A lot of trouble arose when trying to set correctly memory locations, memory va
 
 The ```testRegMapAndMemMap``` is made of basic unit tests testing some ```LDM``` and ```STM```.
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| Root        | Suffix           | Register list  | Test
+| ------------- |:-------------:| -----:|------------|
+| STM      | right-aligned | $1600 |
+| STM      | centered      |   $12 |
+| LDM | are neat      |    $1 |
+| LDM | are neat      |    $1 |
 
 
 
