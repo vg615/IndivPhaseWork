@@ -55,15 +55,14 @@ _Output_ :
 Result<uint32*DataPath*Map<WAddr,uint32>,string> option
 ```
 
-Result<uint32*DataPath*Map<WAddr,uint32>,string> option
-
 - First checks the condition flags: if condition doesn't hold, returns the input registers, flags and memory.
-- If conditions hold, the function matches successively the different types in the opcode: root/suffix.
+- If conditions hold, the function matches successively the different types in the opcode: ```root/suffix```.
 - It then calls computation functions (computeSTM or computeLDM) on the inputs, to which the "checkRestrictions" function has been applied: if restrictions have not been respected, it returns an error, otherwise, compute the instruction with those inputs.
 
-- To do so, we use tail recursive functions (modifyMapofRegs for LDM and modifyMapofStack for STM):
-	- Take the list of registers (example {R7, R0-R3} gave us [R0;R1;R2;R3;R7]).
-	- For STM: Using Map.add, update the input Map<MemAddress,MemData> with the base Register Rn as Key for the memory address, and the data in the first register in the registers list (described above) as the data to store. 
+- To do so, we use tail recursive functions (```modifyMapofRegs``` for ```LDM``` and ```modifyMapofStack``` for ```STM```):
+	- Take the list of registers (example ```{R7, R0-R3}``` gave us ```[R0;R1;R2;R3;R7]```).
+	- For ```STM```: Using ```Map.add```, update the input ```F# Map<MemAddress,MemData> 
+	```with the base Register Rn as Key for the memory address, and the data in the first register in the registers list (described above) as the data to store. 
 As long as the registers list is not empty, call recursively modifyMapofStack on the tail of the registers list and with the new memory address being:  (previous memory address + or - 4) , depending on the suffix.
 
 So depending on the suffix:
