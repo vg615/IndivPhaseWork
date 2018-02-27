@@ -28,9 +28,9 @@ The token types are :
 This is all that's required for Operands detection (Opcode detection is already given).
 
 ###### Where: 
-- WriteB is to detect "!" , which means we write back the final memory address into the base register, Rn.
-- LCBRA and RCBRA stand for Left Curly Bracket and Right Curly Bracket.
-- Hyphen is to detect " - " , since the list of registers can be of the form {R4, R5-LR}.
+- ```WriteB``` is to detect ```!``` , which means we write back the final memory address into the base register, Rn.
+- ```LCBRA``` and ```RCBRA``` stand for ```Left Curly Bracket``` and ```Right Curly Bracket```.
+- ```Hyphen``` is to detect ``` - ``` , since the list of registers can be of the form ```F# {R4, R5-LR} ```.
 It converts all input operands to uppercase letters to make sure registers such as "lr or "pc" will be correctly tokenised.
 
 
