@@ -55,6 +55,12 @@ _Output_ :
 Result<uint32*DataPath*Map<WAddr,uint32>,string> option
 ```
 
+##### The ```execution``` function returns:
+
+- The final address at which we stopped in memory.
+- The map between registers and their stored values updated.
+- The map between memory address and memory values updated.
+
 - First checks the condition flags: if condition doesn't hold, returns the input registers, flags and memory.
 - If conditions hold, the function matches successively the different types in the opcode: ```root/suffix```.
 - It then calls computation functions (computeSTM or computeLDM) on the inputs, to which the "checkRestrictions" function has been applied: if restrictions have not been respected, it returns an error, otherwise, compute the instruction with those inputs.
@@ -79,12 +85,6 @@ Both ```LDM``` and ```STM``` functions also return ```PC``` incremented by 4, an
 The Map of memory location to data is chosen to be currently of type ``` Map<WAddr,uint32> ``` and not ``` Map<WAddr,MemLoc<'INS>> ``` to simplify testing, and because it is easy to modify in the group phase.
 
 
-
-##### The ```execution``` function returns:
-
-- The final address at which we stopped in memory.
-- The map between registers and their stored values updated.
-- The map between memory address and memory values updated.
 
 
 ### Tests:
