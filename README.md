@@ -27,12 +27,13 @@ _Output_ :
 Token list
 ```
 
+###### Type created: 
+```F#
+type Token = |Reg of RName*int |WriteB of int |Comma of int |LCBRA of int |RCBRA of int |Hyphen of int |END
+```
+
 Supposed to tokenise operands only.
 
-The token types are : 
-```F#
-|Reg of RName*int |WriteB of int |Comma of int |LCBRA of int |RCBRA of int |Hyphen of int |END
-```
 This is all that's required for Operands detection (Opcode detection is already given).
 
 ###### Where: 
