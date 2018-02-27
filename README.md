@@ -43,6 +43,23 @@ It converts all input operands to uppercase letters to make sure registers such 
 
 
 ### Parser:
+###### Types created:
+```F#
+type Root = |LDM
+            |STM
+	    
+type Suffix = |DA
+              |DB
+              |IA
+              |IB
+              |ED
+              |FA
+              |FD
+              |EA  
+     
+type Instr = {instrClass:InstrClass; root: Root; suffix: Suffix; Rn: RName; writeB: bool; reglist: RName list}	    
+```
+
 
 _Inputs_ : 
 ```F#
@@ -109,6 +126,16 @@ _Important things not to forget_:
 
 
 
+##### Contribution to the Group Deliverable : 
+
+- Error messages were carefully chosen so that it is easy to find which part of the code threw an error.
+- The output type of the ```execution``` function enables monadic error handling for the rest of the project.
+- The ```execution``` function returns all the data (registers, memory, flags), and not just the one that has been altered: this enables it to be easily passed on to other function.
+- _Clarity of code_ has sometimes been prioritised to _code efficiency_ (for example creating two different functions ```computeSTM``` and ```computeLDM``` to clearly see which function is doing which work, and how), enabling anyone starting to take over the code to quickly understand it.
+- ```Root``` and ```Suffix``` types have been created separately to make the code more robust.
+
+
+
 
 ### Tests:
 
@@ -124,7 +151,7 @@ To do the ```LDM``` instruction:
 and creates a  ```Map<WAddr, <MemData>>```. 
 
 Initial ```Map<RName;uint32>``` and ```Map<WAddr, <MemData>>``` are created by using the two above functions on the output of ```RunVisualWithFlagsOut defaultParas " " ``` .
-_Important to note_: when comparing values; we don't look at R0, R13, R14 or R15 since these registers are used in ```Visual run through F#```, to store and load memory so they are not relevant.
+_Important to note_: when comparing values; we don't look at R0, R13, R14 or R15 since these registers are used in ```Visual run through F#```, to store and load memory so they are not relevant. This explains the ```removeR0andR13toR15``` function.
 _A lot of trouble arose when trying to set correctly memory locations, memory values because memory addresses seemed to be offset by some undetermined number_, which is why this test is trivial. But at least it can compare the two outputs.
 
 2) Then, we call the same instructions on both our ```Execution``` function and ```RunVisualWithFlagsOut``` and compare their output registers.
