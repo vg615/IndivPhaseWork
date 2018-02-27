@@ -36,11 +36,11 @@ It converts all input operands to uppercase letters to make sure registers such 
 
 ### Parser:
 
-The parser is built based around this _simple reasoning_: the syntax for an LDM/STM instruction will ALWAYS have the form of ```OpCode Rn(Optional !), {list of registers}```. Therefore, the list of possible instructions is very straightforward and easy to match. 
+The parser is built based around this _simple reasoning_: the syntax for an LDM/STM instruction will ALWAYS have the form of ```OpCode Rn(!), {list of registers}```. Therefore, the list of possible instructions is very straightforward and easy to match. 
 
 It breaks the input line into 2 major blocks, which are analysed in the ```parse``` and ```makeRegList``` functions.
 
-The role of the ```parse``` function is to detect a correct syntax starting with an ```Rn(Optional !), {``` block. If it doesn't recognise a correct line, returns an error. Otherwise, it calls ```makeRegList``` on 
+The role of the ```parse``` function is to detect a correct syntax starting with an ```Rn(!), {``` block. If it doesn't recognise a correct line, returns an error. Otherwise, it calls ```makeRegList``` on 
 ```list of registers}```, which is the rest of the input line. This function also checks for syntax error and returns _the list of RName type correctly ordered and with only one appearance of each RName_ (in case reglist is of the form  ```{R1,R1,R1}```). 
 All this is done with ```removeDuplicates``` , ```orderListreg``` and ```expandRegRange``` (which from ```R0-R3``` creates ```[R0;R1;R2;R3]```).
 
