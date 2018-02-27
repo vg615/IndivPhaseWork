@@ -61,6 +61,7 @@ Result<uint32*DataPath*Map<WAddr,uint32>,string> option
 - The map between registers and their stored values updated.
 - The map between memory address and memory values updated.
 
+Process :
 - First checks the condition flags: if condition doesn't hold, returns the input registers, flags and memory.
 - If conditions hold, the function matches successively the different types in the opcode: ```root/suffix```.
 - It then calls computation functions (computeSTM or computeLDM) on the inputs, to which the "checkRestrictions" function has been applied: if restrictions have not been respected, it returns an error, otherwise, compute the instruction with those inputs.
