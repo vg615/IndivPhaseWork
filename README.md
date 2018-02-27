@@ -29,7 +29,13 @@ Token list
 
 ###### Type created: 
 ```F#
-type Token = |Reg of RName*int |WriteB of int |Comma of int |LCBRA of int |RCBRA of int |Hyphen of int |END
+type Token = |Reg of RName*int 
+             |WriteB of int 
+             |Comma of int 
+             |LCBRA of int 
+             |RCBRA of int 
+             |Hyphen of int 
+             |END
 ```
 
 Supposed to tokenise operands only.
