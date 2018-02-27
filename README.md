@@ -38,9 +38,8 @@ type Token = |Reg of RName*int
              |END
 ```
 
-Supposed to tokenise operands only.
+Supposed to tokenise Operands only (Opcode detection is already given).
 
-This is all that's required for Operands detection (Opcode detection is already given).
 
 ###### Where: 
 - ```WriteB``` is to detect ```!``` , which means we write back the final memory address into the base register, Rn.
