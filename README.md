@@ -126,12 +126,12 @@ _A lot of trouble arose when trying to set correctly memory locations, memory va
 
 The ```testRegMapAndMemMap``` is made of basic unit tests testing some ```LDM``` and ```STM```.
 
-| Root          | Suffix        | Register list  |WriteBack | Status
-| ------------- |:-------------:| --------------:|----------|----------|
-| STM      | IB | [R7;R8] | No | Passed
-| STM      | DB      |   [R1;R9;R10;R11] | Yes | Passed
-| LDM | IA      |   [R2;R3;R4]     | No | Passed
-| LDM | DA      |   [R9;R1]   | Yes  | Passed
+|     Root      |     Suffix    |  Register list | WriteBack| Test
+| ------------- |:-------------:| --------------:|----------|------|
+| STM           |       IB      |     [R7;R8]    |    No    | Passed
+| STM           | DB            | [R1;R9;R10;R11]| Yes      | Passed
+| LDM           | IA            |   [R2;R3;R4]   | No       | Passed
+| LDM           | DA            |   [R9;R1]      | Yes      | Passed
 
 
 
